@@ -1,0 +1,29 @@
+.cardPrueba {
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-color:#fff ;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25 rem;
+}
+.prueba {
+    display: flex;
+    overflow-x: scroll;
+    gap: 40 px;
+    flex-direction: row;
+}
+.logo {
+    width: 100px;
+}
+#Contenedor{
+    padding-bottom: 10px;
+    border-bottom: gray 1px solid;
+}
+.Datos{
+    justify-content: center;
+    display: flex;
+}
+#contenedorDeDatos{
+    justify-content: space-evenly;
+}
