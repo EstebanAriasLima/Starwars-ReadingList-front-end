@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { StaticRouter } from "react-router-dom";
-import rigoImage from "../../img/rigo-baby.jpg";
+// import { StaticRouter } from "react-router-dom";
+// import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { Card } from "../component/Card";
-import { CardPlanets } from "../component/CardPlanets";
-import { CardVehicles } from "../component/CardVehicles";
+// import { CardPlanets } from "../component/CardPlanets";
+// import { CardVehicles } from "../component/CardVehicles";
 import { Title } from "../component/Title";
 import { Context } from "../store/appContext";
 
@@ -19,22 +19,24 @@ export const Home = () => {
 				{store.characters.map((character, index) => {
 					return <Card
 						key={character.id}
-						item={character} />
+						item={character}
+						resource={"people"}/>
 				})}
 			</div>
 			<Title text="Planets" />
 			<div className="prueba">
 				{store.planet.map((planet, index) => {
-					return <CardPlanets
+					return <Card
 						key={planet.id}
-						item={planet} />
+						item={planet}
+						resource={"planets"} />
 				})}
 			</div>
 			<Title text="Vehicles"/>
 			<div className="prueba">
 				{store.vehicle.map((vehicle, index) => {
-					return <CardVehicles
-					key={vehicle.id} item={vehicle} />
+					return <Card
+					key={vehicle.id} item={vehicle} resource={"vehicles"} />
 				})}
 			</div>
 		</div>

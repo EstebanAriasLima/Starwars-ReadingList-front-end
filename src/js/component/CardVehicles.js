@@ -1,3 +1,6 @@
+// card que ha uedado inutilizado, ya que se ha optimizado el Card.js para que pueda ser utilizado para vehiculos y planetas
+
+
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
@@ -5,7 +8,7 @@ import { Link } from "react-router-dom";
 export const CardVehicles = ({ item }) => {
     return (
         <div className="cardPrueba p-0 mx-2" style={{ minWidth: "250px" }}>
-            <img src={"https://starwars-visualguide.com/assets/img/vehicles/" + `${item.id}.jpg`} className="card-img-top" alt="404 Not Found" />
+            <img src={"https://starwars-visualguide.com/assets/img/vehicles/" + `${item.uid}.jpg`} className="card-img-top" alt="404 Not Found" />
             <div className="card-body">
                 <h5 className="card-title">{item.name}</h5>
                 <p className="card-text"></p>

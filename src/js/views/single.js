@@ -17,40 +17,46 @@ export const Single = (props) => {
 	return (
 		<div className="jumbotron">
 			<div id="Contenedor" className="container d-flex">
-				<img src={params.resource == "planets" ? "https://starwars-visualguide.com/assets/img/planets/" + `${store.item.id}.jpg` : "https://starwars-visualguide.com/assets/img/characters/" + `${store.item.id}.jpg` } alt="404 Not Found" />
+				<img src={params.resource == "planets" ? "https://starwars-visualguide.com/assets/img/planets/" + `${store.item.uid}.jpg` : params.resource == "vehicles" ? "https://starwars-visualguide.com/assets/img/vehicles/" + `${store.item.uid}.jpg` : "https://starwars-visualguide.com/assets/img/characters/" + `${store.item.uid}.jpg`} alt="404 Not Found" />
 				{store.item && (
 					<react.Fragment>
 						<div className="d-flex justify-content-center row">
-							<h1 id="Title" className="display-4 d-flex justify-content-center">{store.item.properties && store.item.properties.name}</h1>
+							<h1 id="Title" className="display-4 d-flex justify-content-center">{store.item && store.item.name}</h1>
 							<p className="my-4 text-center">{store.item.description}</p>
 						</div>
 					</react.Fragment>
 				)}
 			</div>
 			<div className="container d-flex" id="contenedorDeDatos">
-				<div className="Datos"><p>
-					<b>name</b>
-					{store.item.properties && store.item.properties.name}</p>
+				<div className="Datos">
+					<b className="px-2">name</b>
+					<p>
+					{store.item && store.item.name}</p>
 				</div>
-				<div className="Datos"><p>
-					<b>{params.resource == "planets" ? "Climate" :  "Birth Year"}</b>
-					{params.resource == "planets" ? store.item.properties && store.item.properties.climate : store.item.properties && store.item.properties.birth_year}</p>
+				<div className="Datos">
+					<b className="px-2">{params.resource == "planets" ? "Climate" : params.resource == "vehicles" ? "model" :  "Birth Year"} </b>
+					<p>
+					{params.resource == "planets" ? store.item && store.item.climate : params.resource == "vehicles" ? store.item && store.item.model : store.item && store.item.birth_year}</p>
 				</div>
-				<div className="Datos"><p>
-					<b>{params.resource == "planets" ? "Population" : "Gender"}</b>
-					{params.resource == "planets" ? store.item.properties && store.item.properties.population : store.item.properties && store.item.properties.gender}</p>
+				<div className="Datos">
+					<b className="px-2">{params.resource == "planets" ? "Population" :params.resource == "vehicles" ? "consumables" : "Gender"}</b>
+					<p>
+					{params.resource == "planets" ? store.item && store.item.population : params.resource == "vehicles" ? store.item && store.item.consumables : store.item && store.item.gender}</p>
 				</div>
-				<div className="Datos"><p>
-					<b>{params.resource == "planets" ? "Orbital period" : "Height"}</b>
-					{params.resource == "planets" ? store.item.properties && store.item.properties.orbital_period : store.item.properties && store.item.properties.height}</p>
+				<div className="Datos">
+					<b className="px-2">{params.resource == "planets" ? "Orbital period" :params.resource == "vehicles" ? "vehicle_class" : "Height"}</b>
+					<p>
+					{params.resource == "planets" ? store.item && store.item.orbital_period :params.resource == "vehicles" ? store.item.vehicle_class : store.item && store.item.height}</p>
 				</div>
-				<div className="Datos"><p>
-					<b>{params.resource == "planets" ? "Rotation period" : "Skin color"}</b>
-					{params.resource == "planets" ? store.item.properties && store.item.properties.rotation_period :  store.item.properties && store.item.properties.skin_color}</p>
+				<div className="Datos">
+					<b className="px-2">{params.resource == "planets" ? "Rotation period" : params.resource == "vehicles" ? "crew" : "Skin color"}</b>
+					<p>
+					{params.resource == "planets" ? store.item && store.item.rotation_period : params.resource == "vehicles" ? store.item && store.item.crew : store.item && store.item.skin_color}</p>
 				</div>
-				<div className="Datos"><p>
-					<b>{params.resource == "planets" ? "Diameter" : "Eye color"}</b>
-					{params.resource == "planets" ? store.item.properties && store.item.properties.diameter : store.item.properties && store.item.properties.eye_color}</p>
+				<div className="Datos">
+					<b className="px-2">{params.resource == "planets" ? "Diameter" : params.resource == "vehicles" ? "passengers" : "Eye color"}</b>
+					<p>
+					{params.resource == "planets" ? store.item && store.item.diameter : params.resource == "vehicles" ? store.item && store.item.passengers : store.item && store.item.eye_color}</p>
 				</div>
 			</div>
 		</div>

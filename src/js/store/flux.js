@@ -9,7 +9,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planet: [],
 			vehicle: [],
 			baseUrl: "http://127.0.0.1:5000/",
-			baseUrlSWAPI: "https://www.swapi.tech/api/"
+			baseUrlSWAPI: "https://www.swapi.tech/api/",
+			list:[],
+			favorite: undefined,
 		},
 		actions: {
 			getSingle: async (id, resource) => {
@@ -21,7 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const body = await response.json();
 				if(!response.ok) return;
 				setStore({
-					item: body.result
+					item: body
 				})
 			},
 			getCharacters: async () => {
@@ -31,7 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				);
 				const body = await response.json();
 				setStore({
-					characters: body,
+					characters: body, 
 				});
 				if (response.ok) {
 					(body)
@@ -44,10 +46,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				);
 				const body = await response.json();
 				setStore({
-					planet: body.results,
+					planet: body,
 				})
 				if (response.ok) {
-					(body.results)
+					(body)
 				}
 			},
 			getVehicles: async () => {
@@ -57,10 +59,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				);
 				const body = await response.json();
 				setStore({
-					vehicle: body.results,
+					vehicle: body,
 				})
 				if (response.ok) {
-					(body.results)
+					(body)
 				}
 			},
 			getCharactersSWAPI: async () => {
@@ -73,9 +75,45 @@ const getState = ({ getStore, getActions, setStore }) => {
 					characters: body,
 				});
 				if (response.ok) {
-					(body)
+					(body.results)
 				}
 			},
+
+			getFavorites: async (resource, id) => {
+				const store = getStore();
+				const response = await fetch(
+					`${store.baseUrl}${resource}/${id}`
+				)
+				const body = await response.json();
+				if (!response.ok) return;
+				setStore({
+					favorite: Object.assign({resource},body),
+					list: [...store.list, {...body, resource}],
+				});
+
+			},
+			deleteFavorite: (deleteFavorite) => {
+				const store = getStore();
+				setStore({
+					list: deleteFavorite,
+				});
+				console.log(store.list);
+			},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
